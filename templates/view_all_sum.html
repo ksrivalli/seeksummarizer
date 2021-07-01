@@ -1,0 +1,67 @@
+{% extends 'base1.html' %}
+
+{% block content %}
+<div class="container-fluid bg-c-yellow">
+    <div class="container bg-light text-center">
+        {% for post in posts %}
+        <div class="card">
+            
+            <div class="card-body mt-5 border border-dark m-5">
+                <hr>
+                <strong><h2>TITLE: </h2></strong>  <b>{{post.title}}</b><br>
+                <hr style="background-color:#112222;">
+                <strong><h2>LINK/ID:</h2> </strong>  {{post.link}}<br>
+                <hr style="background-color:#112222;">
+                <strong><h2>SUMMARY: </h2> </strong>  {{post.summary}}<br>
+                <hr style="background-color:#112222;">
+                <form>
+                    <a href="add_comment?id={{ post.id }}" type="button" class="btn text-light bg-c-yellow"><b>Add Comment</b></a><br>
+                </form>
+                <button type="button" class="btn text-light mt-3 bg-c-yellow" data-toggle="modal" data-target="#myModal{{forloop.counter}}">
+                    View Comments
+                  </button>
+          
+                
+            </div>
+            
+        </div>
+                <!-- The Modal -->
+                <div class="modal fade" id="myModal{{forloop.counter}}">
+                    <div class="modal-dialog modal-lg">
+                      <div class="modal-content">
+                      
+                        <!-- Modal Header -->
+                        <div class="modal-header">
+                          <h4 class="modal-title">Comments</h4>
+                          <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        </div>
+                        
+                        <!-- Modal body -->
+                        <div class="modal-body">
+                            {% if not post.comments.all %}
+                           <strong>No comments yet</strong> 
+                        {% else %}
+                            {% for comment in post.comments.all %}
+                              <strong>{{comment.name}}  - {{comment.date_added}} <br></strong>      
+                                    {{comment.body}}<br><br><br>
+                                <hr style="background-color:#112222;">
+                            {% endfor %}
+                        {% endif %}
+                        </div>
+                        
+                        <!-- Modal footer -->
+                        <div class="modal-footer">
+                          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        </div>
+                        
+                      </div>
+                    </div>
+                  </div>
+        <br>
+        {% endfor %}
+    </div>
+
+</div>
+
+
+{% endblock content %}

@@ -1,0 +1,162 @@
+body {
+    padding-top: 70px;
+}
+
+.navbar {
+    background-color: paleturquoise;
+}
+
+.navbar-light .navbar-nav .nav-link {
+    color: black;
+}
+
+.navbar-light .navbar-nav .nav-link:hover {
+    color: #2F819C;
+}
+
+nav ul {
+    list-style: none;
+    text-align: center;
+}
+
+nav ul li a {
+    font-weight: 600;
+    margin: 0 10px;
+}
+
+nav ul li a,
+nav ul li a:after,
+nav ul li a:before {
+    transition: all .5s;
+}
+
+/* stroke */
+nav.stroke ul li a {
+    position: relative;
+}
+
+nav.stroke ul li a:after {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    width: 0%;
+    content: '.';
+    color: transparent;
+    background: #aaa;
+    height: 1px;
+}
+
+nav.stroke ul li a:hover:after {
+    width: 100%;
+}
+
+.brand-size {
+    margin-left: 3%;
+    font-size: 2rem;
+    font-weight: 600
+}
+
+.img-work {
+    margin-top: 6%;
+    right: 0;
+}
+
+.main-text {
+    margin-top: 20%;
+    font-size: 5rem;
+    margin-left: 6%;
+    line-height: 1;
+}
+
+.sub-text {
+    margin-top: 3%;
+    margin-left: 6%;
+    line-height: 1.5;
+    width: 72%;
+    font-size: 130%
+}
+
+.button-click {
+    margin-left: 6%;
+    margin-top: 5%;
+}
+
+.img1 {
+    background-color: #3A3053;
+    margin-left: 10%;
+    width: 80%;
+}
+
+.wrapper {
+    margin-top: 10%;
+    position: relative;
+}
+
+.grey-box {
+    position: relative;
+    z-index: 1;
+    background-color: #F0F0F0;
+    height: 8em;
+    margin-bottom: 1em;
+    margin-top: 2em;
+}
+
+.link-box {
+    position: absolute;
+    z-index: 3;
+    width: 60%;
+    left: 20%;
+    top: 0.5em;
+}
+
+.img-box {
+    position: absolute;
+    z-index: 2;
+    width: 96%;
+    left: 3%;
+    top: -50px;
+    opacity: 1;
+}
+
+.bottom {
+    background-color: #F0F0F0;
+    margin-top: -4%;
+}
+
+.mn-text {
+    text-align: center;
+    font-size: 4rem;
+    font-weight: 500;
+}
+
+.sb-text {
+    text-align: center;
+}
+.bot-img{
+    background-color: #3A3053;
+    width: 100%;
+}
+#my-image-div{ 
+	background-image: url("images/bg-shorten-desktop.svg"); 
+	background-size: cover; 
+    height: 300px;
+	width: 100%;
+    background-color: #3A3053;
+} 
+.my-image-text{ 
+    display: flex;
+    justify-content: center;
+	position: relative; 
+	top: 50px; 
+	text-align: center; 
+    color: white;
+} 
+.footer-col{
+    background-color: black;
+    color: white;
+}
+.footer-col a{
+    color: white;
+}

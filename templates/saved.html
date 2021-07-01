@@ -1,0 +1,28 @@
+{% extends 'base1.html' %}
+{% block content %}
+<div class="container border border-dark bg-white mt-5">
+    <h1 class="text-center p-5" style="text-shadow: 2px 2px grey;"><u>Your Summaries</u></h1>
+    <div class="container">
+        <div class="row">
+            {% for s in summary %}
+            <div class="col-md-4 col-xl-4 d-flex align-items-stretch">
+                <div class="card bg-c-yellow order-card">
+                    <div class="card-block">
+                        <form>
+                        <p><b>{{ s.title }}</b></p>
+                        <hr class="new">
+                        <button class="btn btn-light"><a class="text-dark" href="saved_title?title={{ s.title }}&summary={{s.summary}}">View Summary</a></button>
+                        <button class="btn btn-light"><a class="text-dark" href="delete?id={{s.id}}">Delete</a></button>
+                    </form>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+
+    </div>
+   
+</div>
+
+
+{% endblock content %}

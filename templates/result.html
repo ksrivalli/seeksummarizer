@@ -1,0 +1,59 @@
+{% extends 'base1.html' %}
+{% block content %}
+
+<div class="container">
+    <div class="col-md-4 col-lg-12 content-card">
+        <div class="card-big-shadow">
+            <div class="card card-just-text" data-background="color" data-color="blue" data-radius="none">
+                <div class="content">
+                    
+                    <hr class="new">
+                    <p class="description">
+                        {% for line in summary %}
+                            <p>{{line}}</p>
+                        {% endfor %}
+                    </p>
+                </div>
+                <hr class="new">
+                {% if user.is_authenticated %}
+                <form class="text-center p-5" method="POST" action="{% url 'save_summary' %}">
+                    {% csrf_token %}
+                    <input type="hidden" value="{{ summary }}" name="summary">
+                    <input type="text" name="title" placeholder="Enter title" required>
+                    <input type="submit" class="btn btn-success" value="Save Summary">
+                </form>
+                {% else %}
+                    <h3 class="text-center p-5 text-white">
+                        Login Now to Save Your Summary<br><br>
+                        <a type="button" class=" mt-1 btn btn-lg bg-white" style="color: #112222;" href="accounts/login"><b>LOGIN</b></a>
+                    </h3>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+
+</div>
+
+{% endblock content %}
+
+
+
+<!--
+    <div style="background-color: beige;color: black;">
+        
+    {% for line in summary %}
+        <h3>{{line}}</h3>
+    {% endfor %}
+    </div>
+    {% if user.is_authenticated %}
+    <form method="POST" action="{% url 'save_summary' %}">
+        {% csrf_token %}
+        <input type="hidden" value="{{ summary }}" name="summary">
+        <input type="text" name="title" placeholder="Enter the title">
+        <input type="submit" class="btn btn-primary" value="Save Summary">
+    </form>
+    {% else %}
+    <input value="LOGIN NOW">
+    {% endif %}
+
+-->

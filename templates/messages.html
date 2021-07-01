@@ -1,0 +1,22 @@
+{% extends 'base1.html' %}
+{% block content %}
+
+<div class="container-fluid bg-c-yellow p-5">
+    <div class="container bg-light text-center">
+        {% for message in messages %}
+        <div class="card">
+            
+            <div class="card-body mt-5 border border-dark m-5">
+                <hr>
+                <strong><h4>NAME: </h4></strong>  <b>{{message.name}}</b>
+                <hr style="background-color:#112222;">
+                <strong><h4>MESSAGE:</h4> </strong>  {{message.body}}<br>
+                <hr >
+            </div>
+        </div>
+        {% endfor %}
+    </div>    
+                
+</div>
+
+{% endblock content %}

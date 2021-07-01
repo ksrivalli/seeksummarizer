@@ -1,0 +1,183 @@
+{% extends 'header.html' %}
+{% load static %}
+{% block content %}
+<nav class="navbar navbar-light navbar-expand-md bg-faded justify-content-center fixed-top stroke primary-nav shadow p-3 bg-light mb-5 rounded">
+    <div class="container-fluid">
+        <a href="#" class="navbar-brand d-flex w-50 mr-auto brand-size">Seek Summarizer</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsingNavbar3">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="navbar-collapse collapse w-100" id="collapsingNavbar3">
+            <ul class="navbar-nav w-100 justify-content-center">
+                <li class="nav-item active">
+                    <a class="nav-link " href="#home">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="view_all_sum">View Summaries</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#explore">Explore</a>
+                </li>
+                {% if not user.is_superuser %}
+                <li class="nav-item">
+                    <a class="nav-link" href="contact_form">Contact Us</a>
+                </li>
+                {% endif %}
+            </ul>
+            <ul class="nav navbar-nav ml-auto w-100 justify-content-end">
+                {% if user.is_authenticated %}
+                <li class="nav-item">
+                    <li><a class="nav-link">Hello, {{user.username}}</a></li>&nbsp;&nbsp;&nbsp;
+                    <li class="dropdown">
+                        <button type="button" class="btn btn-outline-secondary dropdown-toggle" data-toggle="dropdown">
+                            <i class="fas fa-user p-1"></i>
+                        </button>
+                        <div class="dropdown-menu">
+                            {% if user.is_superuser %}
+                            <a class="nav-link" href="messages">Messages</a>
+                            {% endif %}
+                            <a class="nav-link" href="saved">Saved</a>
+                            <a class="nav-link" href="accounts/logout">Logout</a>
+                        </div>
+                    </li>
+                </li>
+                {% else %}
+                <li class="nav-item">
+                    <a class="nav-link" href="accounts/register">Sign Up</a>
+                <li><a class="nav-link" href="accounts/login">Login</a></li>
+                </li>
+                {% endif %}
+            </ul>
+        </div>
+    </div>
+</nav>
+<header>
+	<div class="overlay">
+<h1><br>Summarizer</h1>
+<div style="height: 6vh;">
+
+</div>
+<p>Have to go through a huge article and have no time? Last minute reads before the exam? We've been there and we got you coverd</p>
+
+<br>
+	<button class="btn btn-lg bg-light"><a  style="color: #112222;" href="#summarize"><b>Start Now</b></a></button>
+		</div>
+</header>
+
+<div class="wrapper container p-5" id="summarize">
+    <hr>
+<hr>
+<hr>
+<hr>
+    <div class="row justify-content-center">
+              <div class="column" ontouchstart="this.classList.toggle('hover');">
+                  <div class="container">
+                      <div class="front" id="grad1">
+                          <div class="inner">
+                              <p><b>VIDEO SUMMARY</b></p>
+                <span>Enter Youtube-Video-ID and get summary</span>
+                          </div>
+                      </div>
+                      <div class="back">
+                          <div class="inner">
+                            <form action="short" method="GET">
+                               
+                                        <input type="text" name="url-link" class="form-control" placeholder="Enter video-id" required><br>
+                                        <input type="text" name="url-no" class="form-control" placeholder="Enter no. of lines" required>
+                                        <button class="btn btn-info"><b>Summarize</b></button>
+                           
+                            </form>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+              <div class="column" ontouchstart="this.classList.toggle('hover');">
+                  <div class="container">
+                      <div class="front" id="grad2">
+                          <div class="inner">
+                              <p><b>ARTICLE SUMMARY</b></p>
+                <span>Enter article link to generate summary</span>
+                          </div>
+                      </div>
+                      <div class="back">
+                          <div class="inner">
+                            <form action="short_art" method="GET">
+                               
+                                <input type="text" name="url-link" class="form-control" placeholder="Enter article URL" required><br>
+                                <input type="text" name="url-no" class="form-control" placeholder="Enter no. of lines" required>
+                                <button class="btn btn-info"><b>Summarize</b></button>
+                   
+                            </form>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+              <div class="column" ontouchstart="this.classList.toggle('hover');">
+                  <div class="container">
+                      <div class="front" id="grad3">
+                          <div class="inner">
+                              <p><b>TEXT SUMMARY</b></p>
+                <span>Enter text to generate sumary</span>
+                          </div>
+                      </div>
+                      <div class="back">
+                          <div class="inner">
+                            <form action="short_text" method="GET">
+                               
+                                <textarea rows="5" cols="5" type="text" name="url-link" class="form-control" placeholder="Enter text" required></textarea><br>
+                                <input type="text" name="url-no" class="form-control" placeholder="Enter no. of lines" required>
+                                <button class="btn btn-info"><b>Summarize</b></button>
+                   
+                            </form>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+              
+   </div>
+   <hr>
+   <hr>
+   <hr>
+   <hr>
+
+<div class="light container-fluid p-5" id="explore">
+	<main class="container py-4">
+
+		<article class="postcard dark blue mb-5 p-3">
+			<a class="postcard__img_link" href="#">
+				<img class="postcard__img" src="{% static 'images/new.jfif' %}" alt="Image Title" />
+			</a>
+			<div class="postcard__text">
+				<h1 class="postcard__title blue"><a >ARTICLES</a></h1>
+				<div class="postcard__bar"></div>
+				<div class="postcard__preview-txt"> <h5>View the trending articles and the summarized versions.</h5></div>
+				<button class="btn btn-lg bg-light"><a style="color: #112222;" href="{% url 'articles' %}"><b>EXPLORE</b></a></button>
+                
+			</div>
+
+		</article>
+        <div class="bg-white" style="height: 30px;">
+
+        </div>
+		<article class="postcard dark red mt-5 p-3">
+			<a class="postcard__img_link" href="#">
+				<img class="postcard__img" src="{% static 'images/videos.png' %}" alt="Image Title" />	
+			</a>
+			<div class="postcard__text">
+				<h1 class="postcard__title red"><a href="#">VIDEOS</a></h1>
+				<div class="postcard__bar"></div>
+				<div class="postcard__preview-txt"><h5>Selected videos based on your queries with the summarized version</h5></div>
+				<button class="btn btn-lg bg-light"><a style="color: #112222;" href="{% url 'videos' %}"><b>EXPLORE</b></a></button>
+
+			</div>
+		</article>
+
+	</main>
+</div>
+
+<section class="footer">
+    
+</section
+
+
+{% endblock content %}

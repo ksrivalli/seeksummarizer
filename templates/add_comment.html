@@ -1,0 +1,33 @@
+{% extends 'base1.html' %}
+
+{% block content %}
+    <div class="container-fluid row p-5 d-flex align-items-center">
+        <div class="col-lg-6">
+            <div class="card bg-c-yellow text-white">
+                <div class="card-body">
+                    <b><u>Title: </u></b>&nbsp;&nbsp;&nbsp;&nbsp;{{post.title}}<br><br>
+                    <b><u>Summary: </u></b>&nbsp;&nbsp;&nbsp;&nbsp;{{post.summary}}<br><br>
+                    <b><u>Link: </u></b>&nbsp;&nbsp;&nbsp;&nbsp;{{post.link}}<br><br>
+                </div>
+              </div>
+        </div>
+        <div class="col-lg-6 justify-content-center p-5">
+            <form action="save_comment">
+                <input type="hidden" name="id" value="{{post.id}}">
+                <h3>Name:</h3>
+                <input name="name" placeholder="enter name"><br><br>
+                <h3>Comment:</h3><br>
+                <textarea name="comment" placeholder="enter comment" rows="7" cols="60"></textarea><br><br>
+                
+                <button class="btn btn-lg bg-c-yellow text-white">Add</button>
+        
+            </form>
+        
+
+        </div>
+
+    </div>
+
+    
+    
+{% endblock content %}

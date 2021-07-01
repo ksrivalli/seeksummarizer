@@ -1,0 +1,38 @@
+{% extends 'base1.html' %}
+{% block content %}
+
+<div class="container">
+    <div class="col-md-4 col-lg-12 content-card">
+        <div class="card-big-shadow">
+            <div class="card card-just-text" data-background="color" data-color="blue" data-radius="none">
+                <div class="content">
+                    <h2 class="title"><b>{{ title }}</b></h2>
+                    <hr class="new">
+                    <p class="description">
+                        {% for line in sum %}
+                            <p>{{line}}</p>
+                        {% endfor %}
+                    </p>
+                </div>
+                <hr class="new">
+                {% if user.is_authenticated %}
+                <form class="p-3 text-center">
+                    <a class="btn btn-light text-dark p-3" href="save_art?title={{title}}&summary={{sum}}"><b>Save</b></a>
+                </form> 
+                {% else %}
+                <h3 class="text-center p-5 text-white">
+                    Login Now to Save Your Summary<br>
+                    <a type="button" class="btn btn-lg bg-white" style="color: #112222;" href="accounts/login"><b>LOGIN</b></a>
+                </h3>
+                
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock content %}
+
+
+
+

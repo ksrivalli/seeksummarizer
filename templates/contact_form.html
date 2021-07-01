@@ -1,0 +1,22 @@
+{% extends 'base1.html' %}
+{% block content %}
+<div class="container-fluid p-5">
+    <div class="container">
+        <div class="card bg-c-yellow text-white">
+            <div class="card-body">
+                <form action="add_contact">
+                    <h3>Name:</h3>
+                    <input name="name" placeholder="enter name"><br><br>
+                    <h3>Message</h3><br>
+                    <textarea name="body" placeholder="enter message" rows="7" cols="60"></textarea><br><br>
+                    
+                    <button class="btn btn-lg btn-light">Add</button>
+                
+                </form>
+            </div>
+          </div>
+    </div>
+
+</div>
+
+{% endblock content %}
